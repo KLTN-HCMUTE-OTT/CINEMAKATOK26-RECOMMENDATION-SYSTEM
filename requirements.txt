@@ -1,0 +1,17 @@
+fastapi
+uvicorn
+pandas
+scikit-learn
+numpy
+psycopg2-binary
+python-dotenv
+apscheduler
+httpx
+sqlalchemy
+implicit
+scipy
+mlxtend
+typer
+matplotlib
+seaborn
+joblib
