@@ -24,7 +24,7 @@ def run_training_pipeline(auditlog: pd.DataFrame, content: pd.DataFrame, val_day
     Run the full multi-stage training pipeline.
     """
     log("\n" + "=" * 60)
-    log("🚀 STARTING MULTI-STAGE TRAINING PIPELINE")
+    log("STARTING MULTI-STAGE TRAINING PIPELINE")
     log("=" * 60)
 
     # Ensure timestamp exists for time-based split
@@ -135,5 +135,5 @@ def run_training_pipeline(auditlog: pd.DataFrame, content: pd.DataFrame, val_day
             log(f"  Feature '{name}': gain={imp:.1f}")
 
     log("=" * 60)
-    log("✅ MULTI-STAGE PIPELINE TRAINED & SAVED")
+    log("MULTI-STAGE PIPELINE TRAINED & SAVED")
     log("=" * 60 + "\n")

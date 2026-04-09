@@ -126,3 +126,5 @@ logs/
 data/*.csv
 data/*.json
 models/*.pkl
+data/plots/*.png
+data/saved_models/*.joblib

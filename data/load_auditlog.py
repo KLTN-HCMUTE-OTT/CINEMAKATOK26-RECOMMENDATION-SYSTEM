@@ -29,7 +29,8 @@ SELECT
     action,
     "resourceType",
     "resourceId",
-    "signalWeight"
+    "signalWeight",
+    "createdAt"
 FROM audit_logs
 WHERE "resourceType" IN ('MOVIE', 'SERIES')
   AND "resourceId" IS NOT NULL
@@ -55,6 +56,10 @@ def load_auditlog(include_negative: bool = False) -> pd.DataFrame:
     # Rename resourceId → itemid for downstream compatibility
     df = df.rename(columns={"resourceId": "itemid"})
 
+    # Ensure UUIDs are strings
+    df["itemid"] = df["itemid"].astype(str)
+    df["userId"] = df["userId"].astype(str)
+
     # Filter out negative signals unless explicitly requested
     if not include_negative:
         df = df[df["signalWeight"] > 0]
@@ -72,4 +77,4 @@ def load_auditlog(include_negative: bool = False) -> pd.DataFrame:
 
     log(f"Cleaned interactions: {len(df)} (users={df['userId'].nunique()}, items={df['itemid'].nunique()})")
 
-    return df[["userId", "itemid", "rating", "action", "resourceType"]]
+    return df[["userId", "itemid", "rating", "action", "resourceType", "createdAt"]]
