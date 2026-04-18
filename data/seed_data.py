@@ -31,6 +31,7 @@ random.seed(42)
 
 MATURITY_RATINGS = ["G", "PG", "PG-13", "R", "NC-17", "TV-Y", "TV-PG", "TV-14", "TV-MA"]
 GENDERS = ["MALE", "FEMALE", "OTHER"]
+TYPE = ["MOVIE", "TVSERIES"]
 
 # ─── Sample Data ──────────────────────────────────────────────
 
@@ -100,84 +101,84 @@ DIRECTORS_DATA = [
 
 # title, description, type, duration_or_none, maturity, imdb
 MOVIES_DATA = [
-    ("Hai Phượng", "A debt collector's daughter is kidnapped, leading her on a desperate mission across Vietnam to rescue her before it's too late.", "MOVIE", 98, "PG-13", 6.4),
-    ("Bố Già", "A middle-aged father tries to balance his traditional ways with his modern family's needs in this heartfelt comedy-drama.", "MOVIE", 128, "PG", 7.2),
-    ("Mắt Biếc", "A man falls deeply in love with his childhood friend, but she longs for the glittering city life, setting off a tale of unrequited love.", "MOVIE", 117, "PG", 7.5),
-    ("Tiệc Trăng Máu", "A group of friends play a game of revealing their phone messages during a dinner party, exposing secrets that threaten their relationships.", "MOVIE", 120, "R", 7.0),
-    ("Lật Mặt 6: Tấm Vé Định Mệnh", "An action-packed journey of family bonds and survival against all odds in rural Vietnam.", "MOVIE", 132, "PG-13", 6.8),
-    ("Oppenheimer", "The story of J. Robert Oppenheimer and his role in the development of the atomic bomb during World War II.", "MOVIE", 180, "R", 8.3),
-    ("Barbie", "Barbie and Ken leave the perfection of Barbieland for the real world, where they discover the joys and perils of living among humans.", "MOVIE", 114, "PG-13", 6.9),
-    ("Dune: Part Two", "Paul Atreides unites with the Fremen while on a warpath of revenge against the conspirators who destroyed his family.", "MOVIE", 166, "PG-13", 8.5),
-    ("The Batman", "Batman ventures into Gotham City's underworld when a sadistic killer leaves behind a trail of cryptic clues.", "MOVIE", 176, "PG-13", 7.8),
-    ("Spider-Man: No Way Home", "Spider-Man seeks help from Doctor Strange when his identity is revealed, inadvertently unleashing the multiverse.", "MOVIE", 148, "PG-13", 8.2),
-    ("Top Gun: Maverick", "After more than 30 years, Maverick is still pushing the envelope as a top naval aviator.", "MOVIE", 130, "PG-13", 8.2),
-    ("Everything Everywhere All at Once", "A middle-aged Chinese immigrant is swept up into an insane adventure where she alone can save existence.", "MOVIE", 139, "R", 7.8),
-    ("John Wick: Chapter 4", "John Wick uncovers a path to defeating the High Table but must face a new enemy with powerful alliances.", "MOVIE", 169, "R", 7.7),
-    ("Killers of the Flower Moon", "Members of the Osage Nation are murdered under mysterious circumstances in 1920s Oklahoma.", "MOVIE", 206, "R", 7.6),
-    ("Poor Things", "A young woman brought back to life by an eccentric scientist runs off with a lawyer on a whirlwind adventure.", "MOVIE", 141, "R", 7.9),
-    ("The Holdovers", "A cranky history teacher at a New England boarding school remains on campus during Christmas break.", "MOVIE", 133, "R", 7.9),
-    ("Past Lives", "Two childhood friends reconnect after decades apart, exploring questions of fate, destiny, and love.", "MOVIE", 105, "PG-13", 7.8),
-    ("Anatomy of a Fall", "A woman is suspected of her husband's death, and their blind son faces a moral dilemma as the trial unfolds.", "MOVIE", 152, "R", 7.7),
-    ("Godzilla x Kong: The New Empire", "Two ancient titans, Godzilla and Kong, team up against a colossal undiscovered threat hidden within our world.", "MOVIE", 115, "PG-13", 6.4),
-    ("Inside Out 2", "Riley hits puberty and encounters new emotions — Anxiety, Envy, Ennui, and Embarrassment — alongside the original gang.", "MOVIE", 100, "PG", 7.6),
-    ("The Wild Robot", "A robot named Roz is stranded on an uninhabited island and must learn to adapt to the harsh wilderness.", "MOVIE", 102, "PG", 8.1),
-    ("Gladiator II", "A former slave rises through the ranks of the gladiatorial arena to challenge the might of the Roman Empire.", "MOVIE", 148, "R", 6.9),
-    ("Wicked", "The untold story of the witches of Oz — how a green-skinned woman became the Wicked Witch of the West.", "MOVIE", 160, "PG", 7.5),
-    ("Challengers", "A former tennis prodigy turned coach transforms her husband's game by entering him in a challenger event against her ex.", "MOVIE", 131, "R", 7.6),
-    ("Civil War", "A team of military-embedded journalists race across a dystopian future America during a rapidly escalating civil war.", "MOVIE", 109, "R", 7.0),
+    ("Hai Phượng", "A debt collector's daughter is kidnapped, leading her on a desperate mission across Vietnam to rescue her before it's too late.", TYPE[0], 98, MATURITY_RATINGS[0], 6.4),
+    ("Bố Già", "A middle-aged father tries to balance his traditional ways with his modern family's needs in this heartfelt comedy-drama.", TYPE[0], 128, MATURITY_RATINGS[1], 7.2),
+    ("Mắt Biếc", "A man falls deeply in love with his childhood friend, but she longs for the glittering city life, setting off a tale of unrequited love.", TYPE[0], 117, MATURITY_RATINGS[1], 7.5),
+    ("Tiệc Trăng Máu", "A group of friends play a game of revealing their phone messages during a dinner party, exposing secrets that threaten their relationships.", TYPE[0], 120, MATURITY_RATINGS[2], 7.0),
+    ("Lật Mặt 6: Tấm Vé Định Mệnh", "An action-packed journey of family bonds and survival against all odds in rural Vietnam.", TYPE[0], 132, MATURITY_RATINGS[3], 6.8),
+    ("Oppenheimer", "The story of J. Robert Oppenheimer and his role in the development of the atomic bomb during World War II.", TYPE[0], 180, MATURITY_RATINGS[2], 8.3),
+    ("Barbie", "Barbie and Ken leave the perfection of Barbieland for the real world, where they discover the joys and perils of living among humans.", TYPE[0], 114, MATURITY_RATINGS[4], 6.9),
+    ("Dune: Part Two", "Paul Atreides unites with the Fremen while on a warpath of revenge against the conspirators who destroyed his family.", TYPE[0], 166, MATURITY_RATINGS[4], 8.5),
+    ("The Batman", "Batman ventures into Gotham City's underworld when a sadistic killer leaves behind a trail of cryptic clues.", TYPE[0], 176, MATURITY_RATINGS[4], 7.8),
+    ("Spider-Man: No Way Home", "Spider-Man seeks help from Doctor Strange when his identity is revealed, inadvertently unleashing the multiverse.", TYPE[0], 148, MATURITY_RATINGS[4], 8.2),
+    ("Top Gun: Maverick", "After more than 30 years, Maverick is still pushing the envelope as a top naval aviator.", TYPE[0], 130, MATURITY_RATINGS[4], 8.2),
+    ("Everything Everywhere All at Once", "A middle-aged Chinese immigrant is swept up into an insane adventure where she alone can save existence.", TYPE[0], 139, MATURITY_RATINGS[5], 7.8),
+    ("John Wick: Chapter 4", "John Wick uncovers a path to defeating the High Table but must face a new enemy with powerful alliances.", TYPE[0], 169, MATURITY_RATINGS[5], 7.7),
+    ("Killers of the Flower Moon", "Members of the Osage Nation are murdered under mysterious circumstances in 1920s Oklahoma.", TYPE[0], 206, MATURITY_RATINGS[5], 7.6),
+    ("Poor Things", "A young woman brought back to life by an eccentric scientist runs off with a lawyer on a whirlwind adventure.", TYPE[0], 141, MATURITY_RATINGS[5], 7.9),
+    ("The Holdovers", "A cranky history teacher at a New England boarding school remains on campus during Christmas break.", TYPE[0], 133, MATURITY_RATINGS[5], 7.9),
+    ("Past Lives", "Two childhood friends reconnect after decades apart, exploring questions of fate, destiny, and love.", TYPE[0], 105, MATURITY_RATINGS[4], 7.8),
+    ("Anatomy of a Fall", "A woman is suspected of her husband's death, and their blind son faces a moral dilemma as the trial unfolds.", TYPE[0], 152, MATURITY_RATINGS[5], 7.7),
+    ("Godzilla x Kong: The New Empire", "Two ancient titans, Godzilla and Kong, team up against a colossal undiscovered threat hidden within our world.", TYPE[0], 115, MATURITY_RATINGS[4], 6.4),
+    ("Inside Out 2", "Riley hits puberty and encounters new emotions — Anxiety, Envy, Ennui, and Embarrassment — alongside the original gang.", TYPE[0], 100, MATURITY_RATINGS[3], 7.6),
+    ("The Wild Robot", "A robot named Roz is stranded on an uninhabited island and must learn to adapt to the harsh wilderness.", TYPE[0], 102, MATURITY_RATINGS[3], 8.1),
+    ("Gladiator II", "A former slave rises through the ranks of the gladiatorial arena to challenge the might of the Roman Empire.", TYPE[0], 148, MATURITY_RATINGS[5], 6.9),
+    ("Wicked", "The untold story of the witches of Oz — how a green-skinned woman became the Wicked Witch of the West.", TYPE[0], 160, MATURITY_RATINGS[3], 7.5),
+    ("Challengers", "A former tennis prodigy turned coach transforms her husband's game by entering him in a challenger event against her ex.", TYPE[0], 131, MATURITY_RATINGS[5], 7.6),
+    ("Civil War", "A team of military-embedded journalists race across a dystopian future America during a rapidly escalating civil war.", TYPE[0], 109, MATURITY_RATINGS[5], 7.0),
 ]
 
 # title, description, type, seasons_data: [(season_num, [(ep_title, duration), ...])]
 SERIES_DATA = [
-    ("Thanh Sói", "A young girl grows up in the criminal underworld and becomes a legendary fighter seeking justice.", "TVSERIES", "TV-MA", 7.1,
+    ("Thanh Sói", "A young girl grows up in the criminal underworld and becomes a legendary fighter seeking justice.", TYPE[1], MATURITY_RATINGS[5], 7.1,
      [(1, [("Khởi Đầu", 45), ("Bóng Tối", 48), ("Sói Con", 50), ("Đường Phố", 47), ("Trả Thù", 52), ("Phận Đời", 46)])]),
-    ("Squid Game Season 2", "Gi-hun returns to the deadly game with a new purpose: to stop it once and for all.", "TVSERIES", "TV-MA", 8.0,
+    ("Squid Game Season 2", "Gi-hun returns to the deadly game with a new purpose: to stop it once and for all.", TYPE[1], MATURITY_RATINGS[5], 8.0,
      [(1, [("Bread and Lottery", 55), ("Halloween Party", 50), ("001", 58), ("Six Legs", 52), ("One More Game", 54), ("O X", 48), ("Friend or Foe", 60)])]),
-    ("Stranger Things 5", "The final chapter of the Hawkins crew as they face the ultimate threat from the Upside Down.", "TVSERIES", "TV-14", 8.7,
+    ("Stranger Things 5", "The final chapter of the Hawkins crew as they face the ultimate threat from the Upside Down.", TYPE[1], MATURITY_RATINGS[4], 8.7,
      [(1, [("The Crawl", 75), ("The Vanishing", 68), ("The Turnbow Trap", 72), ("Sorcerer", 65), ("Shock Jock", 70), ("Escape From Camazotz", 78), ("The Bridge", 80), ("The Rightside Up", 95)])]),
-    ("The Last of Us Season 2", "Joel and Ellie navigate the brutal realities of a post-apocalyptic world as past decisions haunt them.", "TVSERIES", "TV-MA", 8.8,
+    ("The Last of Us Season 2", "Joel and Ellie navigate the brutal realities of a post-apocalyptic world as past decisions haunt them.", TYPE[1], MATURITY_RATINGS[5], 8.8,
      [(1, [("In the Weeks Ahead", 60), ("Descend", 55), ("Burn", 58), ("Would", 62), ("Intromission", 57), ("By and By", 65), ("Gut Punch", 70)])]),
-    ("House of the Dragon S2", "The Targaryen civil war, known as the Dance of Dragons, intensifies as both sides prepare for an all-out battle.", "TVSERIES", "TV-MA", 8.4,
+    ("House of the Dragon S2", "The Targaryen civil war, known as the Dance of Dragons, intensifies as both sides prepare for an all-out battle.", TYPE[1], MATURITY_RATINGS[5], 8.4,
      [(1, [("A Son for a Son", 62), ("Rhaenyra the Cruel", 58), ("The Burning Mill", 65), ("The Red Dragon and the Gold", 60), ("Regent", 63), ("Smallfolk", 67), ("The Red Sowing", 70), ("The Queen Who Ever Was", 72)])]),
-    ("Shōgun", "A shipwrecked English navigator becomes entangled in the ruthless political machinations of 17th century Japan.", "TVSERIES", "TV-MA", 8.7,
+    ("Shōgun", "A shipwrecked English navigator becomes entangled in the ruthless political machinations of 17th century Japan.", TYPE[1], MATURITY_RATINGS[5], 8.7,
      [(1, [("Anjin", 70), ("Servants of Two Masters", 62), ("Tomorrow Is Tomorrow", 65), ("The Eightfold Fence", 58), ("Broken to the Fist", 60), ("Ladies of the Willow World", 63), ("A Stick of Time", 66), ("The Abyss of Life", 68), ("Crimson Sky", 72), ("A Dream of a Dream", 75)])]),
-    ("Fallout", "In a post-nuclear Los Angeles, various factions fight for control of scarce resources and uncover dark secrets.", "TVSERIES", "TV-MA", 7.5,
+    ("Fallout", "In a post-nuclear Los Angeles, various factions fight for control of scarce resources and uncover dark secrets.", TYPE[1], MATURITY_RATINGS[5], 7.5,
      [(1, [("The End", 60), ("The Target", 55), ("The Head", 58), ("The Ghouls", 52), ("The Past", 57), ("The Trap", 62), ("The Radio", 59), ("The Beginning", 65)])]),
-    ("3 Body Problem", "Brilliant scientists across the globe face an unprecedented alien threat that has been shaping human history from the shadows.", "TVSERIES", "TV-MA", 7.6,
+    ("3 Body Problem", "Brilliant scientists across the globe face an unprecedented alien threat that has been shaping human history from the shadows.", TYPE[1], MATURITY_RATINGS[5], 7.6,
      [(1, [("Countdown", 58), ("Red Coast", 55), ("Destroyer of Worlds", 60), ("Our Lord", 57), ("Judgment Day", 62), ("The Stars Our Destination", 65), ("Only Advance", 58), ("Wallfacer", 63)])]),
-    ("The Bear Season 3", "Carmy continues to push for perfection as he transforms his family's sandwich shop into a fine dining experience.", "TVSERIES", "TV-MA", 8.5,
+    ("The Bear Season 3", "Carmy continues to push for perfection as he transforms his family's sandwich shop into a fine dining experience.", TYPE[1], MATURITY_RATINGS[5], 8.5,
      [(1, [("Tomorrow", 35), ("Next", 32), ("Doors", 38), ("Violet", 36), ("Children", 34), ("Napkins", 33), ("Legacy", 37), ("Ice Chips", 35), ("Apologies", 40), ("Forever", 42)])]),
-    ("True Detective: Night Country", "Two detectives investigate the disappearance of eight men from an Arctic research station in Ennis, Alaska.", "TVSERIES", "TV-MA", 7.2,
+    ("True Detective: Night Country", "Two detectives investigate the disappearance of eight men from an Arctic research station in Ennis, Alaska.", TYPE[1], MATURITY_RATINGS[5], 7.2,
      [(1, [("Part 1", 60), ("Part 2", 58), ("Part 3", 55), ("Part 4", 62), ("Part 5", 57), ("Part 6", 65)])]),
-    ("Slow Horses Season 4", "Failed MI5 agents at Slough House uncover a conspiracy that threatens everything they know.", "TVSERIES", "TV-MA", 8.1,
+    ("Slow Horses Season 4", "Failed MI5 agents at Slough House uncover a conspiracy that threatens everything they know.", TYPE[1], MATURITY_RATINGS[5], 8.1,
      [(1, [("Identity Theft", 48), ("A Nice Cold Pint", 45), ("Uninvited Guests", 50), ("Returns", 47), ("Grave Danger", 52), ("Hello Goodbye", 55)])]),
-    ("Reacher Season 2", "Jack Reacher investigates when members of his old military unit start dying under suspicious circumstances.", "TVSERIES", "TV-MA", 7.8,
+    ("Reacher Season 2", "Jack Reacher investigates when members of his old military unit start dying under suspicious circumstances.", TYPE[1], MATURITY_RATINGS[5], 7.8,
      [(1, [("ATM", 50), ("What Happens in Atlantic City", 48), ("Picture Says a Thousand Words", 52), ("A Night at the Symphony", 47), ("Burial", 55), ("New York's Finest", 50), ("The Man Goes Through", 53), ("Fly Boy", 58)])]),
-    ("Silo Season 2", "Juliette ventures outside the silo to uncover the truth about the world beyond, while those inside face their own crises.", "TVSERIES", "TV-14", 8.0,
+    ("Silo Season 2", "Juliette ventures outside the silo to uncover the truth about the world beyond, while those inside face their own crises.", TYPE[1], MATURITY_RATINGS[4], 8.1,
      [(1, [("The Engineer", 55), ("Order", 52), ("Solo", 50), ("Tumblers", 53), ("Descent", 48), ("Barricades", 55), ("The Dive", 58), ("The Book of Quinn", 52), ("The Safeguard", 56), ("Into the Fire", 62)])]),
-    ("Wednesday Season 2", "Wednesday Addams continues her supernatural investigations and personal growth at Nevermore Academy.", "TVSERIES", "TV-14", 7.4,
+    ("Wednesday Season 2", "Wednesday Addams continues her supernatural investigations and personal growth at Nevermore Academy.", "TVSERIES", MATURITY_RATINGS[5], 7.4,
      [(1, [("Here We Go Again", 48), ("Nevermore's Secrets", 45), ("The Monster Club", 50), ("Cat's in the Cradle", 47), ("Wednesday's Shadow", 52), ("Dark Side of the Moon", 55), ("Into the Darkness", 50), ("The Return", 58)])]),
-    ("Loki Season 2", "Loki navigates the multiverse alongside the TVA to prevent the destruction of all timelines.", "TVSERIES", "TV-14", 8.0,
+    ("Loki Season 2", "Loki navigates the multiverse alongside the TVA to prevent the destruction of all timelines.", "TVSERIES", MATURITY_RATINGS[5], 8.0,
      [(1, [("Ouroboros", 52), ("Breaking Brad", 48), ("1893", 55), ("Heart of the TVA", 47), ("Science/Fiction", 58), ("Glorious Purpose", 60)])]),
-    ("Arcane Season 2", "The conflict between the utopian city of Piltover and the oppressed undercity of Zaun reaches its explosive conclusion.", "TVSERIES", "TV-14", 9.0,
+    ("Arcane Season 2", "The conflict between the utopian city of Piltover and the oppressed undercity of Zaun reaches its explosive conclusion.", "TVSERIES", MATURITY_RATINGS[5], 9.0,
      [(1, [("Heavy Is the Crown", 42), ("Watch It All Burn", 40), ("Finally Got the Name Right", 45), ("Paint the Town Blue", 43), ("Blisters and Bedrock", 44), ("The Message Hidden in the Pattern", 48), ("Pretend Like It's the First Time", 46), ("Kill to the Rhythm", 50), ("The Afterlife Party", 52)])]),
-    ("Severance Season 2", "Mark continues to unravel the mysteries behind the severance procedure at Lumon Industries.", "TVSERIES", "TV-MA", 8.6,
+    ("Severance Season 2", "Mark continues to unravel the mysteries behind the severance procedure at Lumon Industries.", TYPE[1], MATURITY_RATINGS[5], 8.6,
      [(1, [("Hello, Ms. Cobel", 55), ("Goodbye, Mrs. Selvig", 52), ("Who Is Alive?", 58), ("Woe's Hollow", 50), ("Trojan's Horse", 53), ("Attila", 55), ("Chikhai Bardo", 60), ("Sweet Sixteen", 52), ("The After Hours", 57), ("Cold Harbor", 65)])]),
-    ("The Penguin", "Oz Cobb rises through the criminal ranks of Gotham City in the aftermath of a devastating flood.", "TVSERIES", "TV-MA", 8.2,
+    ("The Penguin", "Oz Cobb rises through the criminal ranks of Gotham City in the aftermath of a devastating flood.", TYPE[1], MATURITY_RATINGS[5], 8.2,
      [(1, [("After Hours", 55), ("Inside Man", 52), ("Bliss", 58), ("Cent'Anni", 50), ("Homecoming", 53), ("Gold Summit", 56), ("Top Hat", 60), ("A Great or Little Thing", 65)])]),
-    ("Agatha All Along", "Agatha Harkness escapes a magical trap and seeks to regain her powers on the legendary Witches' Road.", "TVSERIES", "TV-14", 6.8,
+    ("Agatha All Along", "Agatha Harkness escapes a magical trap and seeks to regain her powers on the legendary Witches' Road.", TYPE[1], MATURITY_RATINGS[5], 6.8,
      [(1, [("Seekest Thou the Road", 48), ("Circle Sewn With Fate", 45), ("Through Many Miles of Tricks and Trials", 50), ("If I Can't Reach You Let My Song Teach You", 47), ("Darkest Hour/Wake Thy Power", 55), ("Familiar By Thy Side", 52), ("Death's Hand in Mine", 50), ("Follow Me My Friend to Glory at the End", 48), ("Maiden Mother Crone", 58)])]),
-    ("Black Mirror Season 7", "New standalone stories exploring the dark side of technology and its impact on human behavior.", "TVSERIES", "TV-MA", 7.5,
+    ("Black Mirror Season 7", "New standalone stories exploring the dark side of technology and its impact on human behavior.", TYPE[1], MATURITY_RATINGS[5], 7.5,
      [(1, [("Common People", 55), ("Bête Noire", 60), ("Plaything", 50), ("Eulogy", 58), ("Séance", 62), ("USS Callister: Into Infinity", 70)])]),
-    ("Ripley", "Tom Ripley ingratiates himself into the life of a wealthy family in 1960s Italy with deadly consequences.", "TVSERIES", "TV-MA", 7.9,
+    ("Ripley", "Tom Ripley ingratiates himself into the life of a wealthy family in 1960s Italy with deadly consequences.", TYPE[1], MATURITY_RATINGS[5], 7.9,
      [(1, [("I Believe the Concept Is Slumming", 55), ("You're Going to Do Great", 52), ("Sommerso", 58), ("La Dolce Vita", 50), ("Lucio", 53), ("Ripley", 55), ("Macabre Entertainment", 60), ("Narcissus", 57)])]),
-    ("Baby Reindeer", "A struggling comedian becomes the target of a stalker he inadvertently encouraged with kindness.", "TVSERIES", "TV-MA", 8.1,
-     [(1, [("Episode 1", 30), ("Episode 2", 28), ("Episode 3", 32), ("Episode 4", 35), ("Episode 5", 30), ("Episode 6", 33), ("Episode 7", 45)])]),
-    ("Disclaimer", "A journalist discovers she is the subject of a novel that exposes her darkest secrets and threatens to destroy her life.", "TVSERIES", "TV-MA", 6.6,
+    ("Baby Reindeer", "A struggling comedian becomes the target of a stalker he inadvertently encouraged with kindness.", TYPE[1], MATURITY_RATINGS[5], 7.2,
+     [(1, [("I Believe the Concept Is Slumming", 55), ("You're Going to Do Great", 52), ("Sommerso", 58), ("La Dolce Vita", 50), ("Lucio", 53), ("Ripley", 55), ("Macabre Entertainment", 60), ("Narcissus", 57)])]),
+    ("Disclaimer", "A journalist discovers she is the subject of a novel that exposes her darkest secrets and threatens to destroy her life.", "TVSERIES", MATURITY_RATINGS[5], 6.6,
      [(1, [("Chapter I", 55), ("Chapter II", 52), ("Chapter III", 50), ("Chapter IV", 48), ("Chapter V", 55), ("Chapter VI", 53), ("Chapter VII", 60)])]),
-    ("Pachinko Season 2", "A multigenerational Korean saga continues across Korea, Japan, and America exploring love, sacrifice, and survival.", "TVSERIES", "TV-14", 8.4,
+    ("Pachinko Season 2", "A multigenerational Korean saga continues across Korea, Japan, and America exploring love, sacrifice, and survival.", "TVSERIES", MATURITY_RATINGS[4], 8.4,
      [(1, [("Chapter Nine", 55), ("Chapter Ten", 52), ("Chapter Eleven", 58), ("Chapter Twelve", 50), ("Chapter Thirteen", 55), ("Chapter Fourteen", 53), ("Chapter Fifteen", 57), ("Chapter Sixteen", 62)])]),
-    ("Penguin Noir", "A dark reimagining of the penguin's criminal origins in the streets of Gotham's underbelly.", "TVSERIES", "TV-MA", 7.3,
+    ("Penguin Noir", "A dark reimagining of the penguin's criminal origins in the streets of Gotham's underbelly.", "TVSERIES", MATURITY_RATINGS[5], 7.3,
      [(1, [("Shadows", 48), ("Cold Blood", 45), ("The Setup", 50), ("Double Cross", 52), ("Empire Falls", 55), ("End Game", 60)])]),
 ]
 
@@ -328,8 +329,8 @@ def seed_content(clean: bool = False):
                 INSERT INTO content (id, type, title, description, "releaseDate", thumbnail, banner, trailer,
                                      "avgRating", "maturityRating", "imdbRating", "viewCount",
                                      "createdAt", "updatedAt")
-                VALUES (:id, :type, :title, :desc, :release, :thumb, :banner, :trailer,
-                        :avg_rating, :maturity, :imdb, :views, :created, :updated)
+                VALUES (:id, CAST(:type AS content_type_enum), :title, :desc, :release, :thumb, :banner, :trailer,
+                    :avg_rating, CAST(:maturity AS content_maturityrating_enum), :imdb, :views, :created, :updated)
             """), {
                 "id": content_id, "type": ctype, "title": title, "desc": description,
                 "release": release,
@@ -370,8 +371,8 @@ def seed_content(clean: bool = False):
                 INSERT INTO content (id, type, title, description, "releaseDate", thumbnail, banner, trailer,
                                      "avgRating", "maturityRating", "imdbRating", "viewCount",
                                      "createdAt", "updatedAt")
-                VALUES (:id, :type, :title, :desc, :release, :thumb, :banner, :trailer,
-                        :avg_rating, :maturity, :imdb, :views, :created, :updated)
+                VALUES (:id, CAST(:type AS content_type_enum), :title, :desc, :release, :thumb, :banner, :trailer,
+                    :avg_rating, CAST(:maturity AS content_maturityrating_enum), :imdb, :views, :created, :updated)
             """), {
                 "id": content_id, "type": ctype, "title": title, "desc": description,
                 "release": release,
@@ -454,6 +455,22 @@ def _insert_junctions(conn, content_id, cat_ids, tag_ids, actor_ids, dir_ids,
 def _create_content_tables(conn):
     """Create content tables matching the exact schema."""
     conn.execute(text("""
+        DO $$
+        BEGIN
+            IF NOT EXISTS (SELECT 1 FROM pg_type WHERE typname = 'content_type_enum') THEN
+                CREATE TYPE content_type_enum AS ENUM ('MOVIE', 'TVSERIES');
+            END IF;
+        END
+        $$;
+
+        DO $$
+        BEGIN
+            IF NOT EXISTS (SELECT 1 FROM pg_type WHERE typname = 'content_maturityrating_enum') THEN
+                CREATE TYPE content_maturityrating_enum AS ENUM ('G', 'PG', 'PG-13', 'R', 'NC-17', 'TV-Y', 'TV-PG', 'TV-14', 'TV-MA');
+            END IF;
+        END
+        $$;
+
         CREATE TABLE IF NOT EXISTS category (
             id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
             "categoryName" VARCHAR(255) NOT NULL,
@@ -498,7 +515,7 @@ def _create_content_tables(conn):
 
         CREATE TABLE IF NOT EXISTS content (
             id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-            type VARCHAR(20) NOT NULL,
+            type content_type_enum NOT NULL,
             title VARCHAR(255) NOT NULL,
             description TEXT NOT NULL,
             "releaseDate" DATE NOT NULL DEFAULT CURRENT_DATE,
@@ -506,7 +523,7 @@ def _create_content_tables(conn):
             banner VARCHAR(250) NOT NULL,
             trailer VARCHAR(250) NOT NULL,
             "avgRating" DECIMAL(3,1) DEFAULT 0,
-            "maturityRating" VARCHAR(10) DEFAULT 'G',
+            "maturityRating" content_maturityrating_enum DEFAULT 'G',
             "imdbRating" DECIMAL(3,1) DEFAULT 0,
             "viewCount" INTEGER DEFAULT 0,
             "createdAt" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
