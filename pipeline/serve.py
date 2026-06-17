@@ -46,7 +46,7 @@ def recommend_pipeline(user_id: str, auditlog: pd.DataFrame, content: pd.DataFra
     candidates_pool = []
     
     # Check if user is Cold Start (no history in SVD)
-    if svd_model and user_id in svd_model["user_means"]:
+    if svd_model and "predicted" in svd_model and user_id in svd_model["predicted"].index:
         log(f"Stage 1: Generating candidates using SVD for known user {user_id}")
         svd_recs = recommend_svd(svd_model, user_id, seen_items, top_n=200)
         candidates_pool = svd_recs["itemid"].tolist()
@@ -57,6 +57,10 @@ def recommend_pipeline(user_id: str, auditlog: pd.DataFrame, content: pd.DataFra
             unseen_pop = pop_model[~pop_model["itemid"].isin(seen_items)]
             candidates_pool = unseen_pop.head(200)["itemid"].tolist()
             
+    # Filter candidates to only those existing in the content catalog
+    valid_item_ids = set(content["itemid"])
+    candidates_pool = [iid for iid in candidates_pool if iid in valid_item_ids]
+
     if not candidates_pool:
         log("No candidates could be generated.")
         return pd.DataFrame()
@@ -72,11 +76,10 @@ def recommend_pipeline(user_id: str, auditlog: pd.DataFrame, content: pd.DataFra
     # Filter content to only candidate items to speed up computation
     cand_auditlog = auditlog[auditlog["itemid"].isin(candidates_pool)]
     cand_content  = content[content["itemid"].isin(candidates_pool)]
-    current_date  = pd.Timestamp.now(tz="UTC")
-    
-    if "createdAt" not in auditlog.columns:
-        # Fallback date if no real timestamps
-        current_date = pd.Timestamp("2026-01-01", tz="UTC") 
+    if "createdAt" in auditlog.columns and not auditlog.empty:
+        current_date = pd.to_datetime(auditlog["createdAt"], utc=True).max()
+    else:
+        current_date = pd.Timestamp.now(tz="UTC")
         
     item_feats = build_item_features(cand_auditlog, cand_content, current_date)
     
@@ -106,6 +109,6 @@ def recommend_pipeline(user_id: str, auditlog: pd.DataFrame, content: pd.DataFra
     final_recs = cand_df.sort_values(by="lgb_score", ascending=False).head(top_n)
     
     # Merge rich metadata for output
-    final_recs = final_recs.merge(content[["itemid", "title", "type"]], on="itemid", how="left")
+    final_recs = final_recs.merge(content[["itemid", "title", "type"]], on="itemid", how="inner")
     
     return final_recs

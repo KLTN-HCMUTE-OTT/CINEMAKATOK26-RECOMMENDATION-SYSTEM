@@ -8,4 +8,4 @@ class Timer:
         self.start = time.time()
 
     def __exit__(self, exc_type, exc, tb):
-        print(f"[⏱] {self.label}: {time.time() - self.start:.2f}s")
+        print(f"[TIMER] {self.label}: {time.time() - self.start:.2f}s")

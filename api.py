@@ -3,10 +3,7 @@ OTT Recommendation API — FastAPI
 
 Endpoints:
     GET /health                         Health check
-    GET /recommend/{user_id}/svd        SVD-based recommendations
-    GET /recommend/{user_id}/fpgrowth   FP-Growth-based recommendations
-    GET /recommend/{user_id}/similarity Item-item similarity recommendations
-    GET /recommend/{user_id}/pipeline   Multi-Stage ML recommendations (LightGBM)
+    GET /recommend/{user_id}            Multi-Stage ML recommendations (LightGBM)
     GET /models                         List available saved models
 """
 from fastapi import FastAPI, HTTPException, Query
@@ -28,8 +25,8 @@ DATA_TTL = 15 * 60  # seconds before data reload
 
 app = FastAPI(
     title="OTT Recommendation API",
-    version="2.0.0",
-    description="Multi-algorithm recommendation system powered by your database",
+    version="3.0.0",
+    description="Multi-Stage Machine Learning Recommendation System",
 )
 
 
@@ -80,92 +77,27 @@ def health():
 # =========================================
 
 
-# ================= SVD RECOMMEND =================
-@app.get("/recommend/{user_id}/svd")
-def recommend_svd_endpoint(user_id: str, top_n: int = Query(10, ge=1, le=100)):
-    """Get SVD-based recommendations."""
-    ensure_data_loaded()
-
-    from models.svd_recommender import train_svd, recommend_svd
-    from models.persistence import load_latest_model
-
-    svd_model = load_latest_model("svd")
-    if svd_model is None:
-        svd_model = train_svd(R)
-
-    seen = set(auditlog[auditlog["userId"] == user_id]["itemid"])
-
-    recs = recommend_svd(svd_model, user_id, seen, top_n)
-    recs = recs.merge(content[["itemid", "title", "type"]], on="itemid", how="left")
-
-    return {
-        "user_id": user_id,
-        "model": "svd",
-        "recommendations": recs.to_dict(orient="records"),
-    }
-
-
-# ================= FP-GROWTH RECOMMEND =================
-@app.get("/recommend/{user_id}/fpgrowth")
-def recommend_fpgrowth_endpoint(user_id: str, top_n: int = Query(10, ge=1, le=100)):
-    """Get FP-Growth association-rule-based recommendations."""
-    ensure_data_loaded()
-
-    from models.fpgrowth_recommender import train_fpgrowth, recommend_fpgrowth
-    from models.persistence import load_latest_model
-
-    rules = load_latest_model("fpgrowth_rules")
-    if rules is None:
-        _, rules = train_fpgrowth(auditlog)
-
-    seen = set(auditlog[auditlog["userId"] == user_id]["itemid"])
-    recs = recommend_fpgrowth(rules, seen, top_n)
-    recs = recs.merge(content[["itemid", "title", "type"]], on="itemid", how="left")
-
-    return {
-        "user_id": user_id,
-        "model": "fpgrowth",
-        "recommendations": recs.to_dict(orient="records"),
-    }
-
-
-# ================= SIMILARITY RECOMMEND =================
-@app.get("/recommend/{user_id}/similarity")
-def recommend_similarity_endpoint(
-    user_id: str,
-    top_n: int = Query(10, ge=1, le=100),
-    metric: str = Query("cosine", regex="^(cosine|pearson)$"),
-):
-    """Get item-item similarity-based recommendations."""
-    ensure_data_loaded()
-
-    from models.similarity_recommender import compute_similarity, recommend_similarity
-
-    sim_matrix = compute_similarity(R, mode="item", metric=metric)
-    recs = recommend_similarity(user_id, R, sim_matrix, mode="item", top_n=top_n)
-    recs = recs.merge(content[["itemid", "title", "type"]], on="itemid", how="left")
-
-    return {
-        "user_id": user_id,
-        "model": f"similarity_{metric}",
-        "recommendations": recs.to_dict(orient="records"),
-    }
-
-
 # ================= PIPELINE RECOMMEND =================
-@app.get("/recommend/{user_id}/pipeline")
-def recommend_pipeline_endpoint(user_id: str, top_n: int = Query(10, ge=1, le=100)):
+@app.get("/recommend/{user_id}")
+def recommend_endpoint(user_id: str, top_n: int = Query(10, ge=1, le=100)):
     """Get Multi-Stage Machine Learning (LightGBM) recommendations."""
     ensure_data_loaded()
 
     from pipeline.serve import recommend_pipeline
     
+    import math
     recs = recommend_pipeline(user_id, auditlog, content, top_n)
     
+    records = recs.to_dict(orient="records")
+    for r in records:
+        for k, v in r.items():
+            if isinstance(v, float) and (math.isnan(v) or math.isinf(v)):
+                r[k] = None
+                
     return {
         "user_id": user_id,
         "model": "multi_stage_pipeline",
-        "recommendations": recs.to_dict(orient="records"),
+        "recommendations": records,
     }
 
 
