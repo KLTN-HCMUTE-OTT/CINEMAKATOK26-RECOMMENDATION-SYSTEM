@@ -46,7 +46,7 @@ def _load_all():
 
 # ─── TRAIN ─────────────────────────────────────────────────────
 @app.command()
-def train(val_days: int = typer.Option(7, help="Days to hold out for validation split")):
+def train(val_days: int = typer.Option(0, help="Days to hold out for validation split")):
     """Run the modern Multi-Stage ML training pipeline (Candidate Gen + Feature Eng + LightGBM)."""
     from pipeline.train import run_training_pipeline
     auditlog, content, _ = _load_all()
