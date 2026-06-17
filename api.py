@@ -85,12 +85,19 @@ def recommend_endpoint(user_id: str, top_n: int = Query(10, ge=1, le=100)):
 
     from pipeline.serve import recommend_pipeline
     
+    import math
     recs = recommend_pipeline(user_id, auditlog, content, top_n)
     
+    records = recs.to_dict(orient="records")
+    for r in records:
+        for k, v in r.items():
+            if isinstance(v, float) and (math.isnan(v) or math.isinf(v)):
+                r[k] = None
+                
     return {
         "user_id": user_id,
         "model": "multi_stage_pipeline",
-        "recommendations": recs.to_dict(orient="records"),
+        "recommendations": records,
     }
 
 
